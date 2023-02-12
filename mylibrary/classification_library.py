@@ -10,8 +10,10 @@ import re # Regular Expressions: powerful but difficult to use correctly
 only_letters = re.compile(r'[A-Za-z]*')
 NNNN_NN_NN = re.compile('[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
+
 def is_word(word_candidate):
     return bool( only_letters.fullmatch(word_candidate) )
+
 
 def is_int(integer_candidate):
     try:
@@ -20,12 +22,14 @@ def is_int(integer_candidate):
         return False
     return isinstance(integer_candidate, int)
 
+
 def is_decimal(decimal_candidate):
     try:
         decimal_candidate = float(decimal_candidate)
     except ValueError:
         return False
     return isinstance(decimal_candidate, float)
+
 
 def is_date(date_candidate):
     # as long as ####-##-## format
@@ -38,6 +42,7 @@ def is_date(date_candidate):
             return False
     # otherwise return false
     return False
+
 
 def classify(row):
     # takes in a row and returns a string classification
